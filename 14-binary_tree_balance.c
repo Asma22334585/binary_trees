@@ -23,6 +23,21 @@ size_t binary_tree_height(const binary_tree_t *tree)
 }
 
 /**
+ * binary_tree_is_leaf -  checks if a node is a leaf
+ * @node: pointer to the node to check
+ * Return: 1 if node is a leaf, otherwise 0
+ */
+int binary_tree_is_leaf(const binary_tree_t *node)
+{
+	if (!node)
+		return (0);
+	if (node->left != NULL || node->right != NULL)
+		return (0);
+	else
+		return (1);
+}
+
+/**
  * binary_tree_balance - measures the balance factor of a binary tree
  * @tree: pointer to the root node of the tree to measure the balance factor
  * Return: balance factor
@@ -33,7 +48,7 @@ int binary_tree_balance(const binary_tree_t *tree)
 
 	if (!tree)
 		return (0);
-	r = binary_tree_height(tree->right);
 	l = binary_tree_height(tree->left);
+	r = binary_tree_height(tree->right);
 	return (l - r);
 }
